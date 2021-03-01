@@ -32,7 +32,7 @@ public class MusicaController {
 
     //Salvar musica
     @PostMapping
-    public ResponseEntity createMusica(@RequestBody Musica musica) {
+    public ResponseEntity create(@RequestBody Musica musica) {
         return ResponseEntity.ok(service.createMusica(musica));
     }
 
@@ -44,7 +44,7 @@ public class MusicaController {
 
     //Atualizar musica
     @PutMapping
-    public ResponseEntity updateMusica(@RequestBody Musica musicaDTO) {
+    public ResponseEntity update(@RequestBody Musica musicaDTO) {
         Musica musica = service.retrieveMusicaById(musicaDTO.getId());
         musica.setNome(musicaDTO.getNome());
         musica.setAlbum(musicaDTO.getAlbum());
@@ -54,7 +54,7 @@ public class MusicaController {
 
     //Deletar musica
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteMusica(@PathVariable Long id){
+    public ResponseEntity delete(@PathVariable Long id){
         Musica musica = service.retrieveMusicaById(id);
         service.deleteMusica(musica);
         return ResponseEntity.ok("Removido com sucesso");
