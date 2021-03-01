@@ -62,7 +62,7 @@
 	artistaid int8 NULL,
 	playlistid int8 NULL,
 	CONSTRAINT musica_pkey PRIMARY KEY (id),
-	CONSTRAINT fk16jh0bx5ftv1k7vkam5j9w075 FOREIGN KEY (albumid) REFERENCES album(id),
-	CONSTRAINT fk98neyjl498mio916ymye0ujp1 FOREIGN KEY (playlistid) REFERENCES playlist(id),
-	CONSTRAINT fkrd8owf7bnxbukthgqb3at2db1 FOREIGN KEY (artistaid) REFERENCES artista(id)
+	CONSTRAINT fk_albumid_musica FOREIGN KEY (albumid) REFERENCES album(id),
+	CONSTRAINT fk_artistaid_musica FOREIGN KEY (artistaid) REFERENCES artista(id),
+	CONSTRAINT fk_playlistid_musica FOREIGN KEY (playlistid) REFERENCES playlist(id)
     );
