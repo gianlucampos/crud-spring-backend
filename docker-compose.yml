@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    
+  db:
+    image: "postgres:9.6-alpine"
+    container_name: "postgresqldb"
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+      - ./docker_postgres_init.sql:/docker_postgres_init.sql
+    ports:
+      - "5000:5432"
+    environment:
+      - POSTGRES_DB=repertorio
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=teste12
+  
+  app:
+    image: app
+    container_name: app_crud_react_backend
+    ports:
+      - "8082:8082"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/repertorio
+    depends_on:
+      - db
+      
+volumes: 
+  postgresql-data:
