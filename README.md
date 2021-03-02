@@ -13,7 +13,7 @@ Para ambientes [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/),
 Nos ambientes *Windows* e *Mac* já são instalados juntos com o Docker, para Linux basta [seguir as instruções](https://docs.docker.com/compose/install/) .
 
 ### Como rodar a aplicação?
-
+## Docker compose ##
 Para construir aplicação:
 
 ```
@@ -30,4 +30,35 @@ Para parar aplicação:
 
 ```
 $ docker-compose down
+```
+
+## Rodando em servidor local ##
+Necessário executar comandos dentro da pasta onde contém os arquivos do projeto com o pom.xml
+Para construir e testar build: 
+
+```
+$ maven package
+```
+Ou
+
+```
+$ mvn install
+```
+
+Executar aplicação via jar
+
+```
+$ java -jar target/crud-react-backend-0.0.1-SNAPSHOT
+```
+
+Via plugin do maven
+
+```
+$ mvn crud-react-backend:run
+```
+
+Apenas gerar arquivo .jar:
+
+```
+$ mvn install -DskipTests
 ```
