@@ -3,17 +3,9 @@ package crud.react.backend.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 /**
- *
  * @author gianlucampos
  */
 @Entity
@@ -28,10 +20,11 @@ public class Playlist implements Serializable {
     @Column
     private String descricao;
     @OneToMany
-    @JoinColumn(name = "PLAYLISTID", referencedColumnName = "ID")
+    @JoinColumn(name = "PLAYLISTID", referencedColumnName = "ID",
+            foreignKey = @ForeignKey(name = "fk_playlistid_musica"))
     private List<Musica> musicas = new ArrayList<>();
 
-    
+
     public Long getId() {
         return id;
     }
@@ -63,5 +56,5 @@ public class Playlist implements Serializable {
     public void setMusicas(List<Musica> musicas) {
         this.musicas = musicas;
     }
-    
+
 }

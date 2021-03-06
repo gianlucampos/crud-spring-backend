@@ -1,14 +1,7 @@
 package crud.react.backend.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 /**
  *
@@ -24,10 +17,10 @@ public class Musica implements Serializable {
     @Column
     private String nome;
     @OneToOne
-    @JoinColumn(name = "ARTISTAID", referencedColumnName = "ID")
+    @JoinColumn(name = "ARTISTAID", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "fk_artistaid_musica"))
     private Artista artista;
     @OneToOne
-    @JoinColumn(name = "ALBUMID", referencedColumnName = "ID")
+    @JoinColumn(name = "ALBUMID", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "fk_albumid_musica"))
     private Album album;
 
     public Long getId() {

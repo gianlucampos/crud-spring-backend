@@ -25,7 +25,7 @@ public class Album implements Serializable {
     private Integer anoLancamento;
     @Column
     private Byte[] capa;
-    
+
     public Long getId() {
         return id;
     }

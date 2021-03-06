@@ -6,9 +6,11 @@ import crud.react.backend.model.Musica;
 import crud.react.backend.repository.AlbumRepository;
 import crud.react.backend.repository.ArtistaRepository;
 import crud.react.backend.repository.MusicaRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -24,16 +26,16 @@ public class MusicaService {
     @Autowired
     private AlbumRepository albumRepository;
 
-    public List<Musica> findAll() {
+    public List<Musica> findAllMusicas() {
         return musicaRepository.findAll();
     }
 
-    public Musica createMusica(Musica musica) {
+    public Musica saveMusica(Musica musica) {
         return musicaRepository.save(musica);
     }
 
     public Musica retrieveMusicaById(Long id) {
-        return musicaRepository.findById(id).get();
+        return musicaRepository.findById(id).orElse(null);
     }
 
     public void deleteMusica(Musica musica) {
@@ -41,13 +43,23 @@ public class MusicaService {
     }
 
     //Artista
-    public Artista createArtista(Artista artista) {
+    public Artista saveArtista(Artista artista) {
         return artistaRepository.save(artista);
     }
 
+    public List<Artista> findAllArtistas() {
+        return artistaRepository.findAll();
+    }
+
     //Album
-    public Album createAlbum(Album album) {
+    //@POST albums
+    public Album saveAlbum(Album album) {
         return albumRepository.save(album);
+    }
+
+    //@GET albums/{artista}
+    public List<Album> findAlbunsByArtista(Long idArtista) {
+        return albumRepository.findAlbunsByArtista(idArtista);
     }
 
 }

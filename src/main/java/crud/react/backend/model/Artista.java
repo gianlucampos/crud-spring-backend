@@ -1,18 +1,13 @@
 package crud.react.backend.model;
 
 import crud.react.backend.enumeration.Genero;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
  * @author gianlucampos
  */
 @Entity
@@ -27,6 +22,10 @@ public class Artista implements Serializable {
     @Column
     @Enumerated(EnumType.STRING)
     private Genero genero;
+    @OneToMany
+    @JoinColumn(name = "ARTISTAID", referencedColumnName = "ID",
+            foreignKey = @ForeignKey(name = "fk_artistaid_album"))
+    private List<Album> albums = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -50,6 +49,22 @@ public class Artista implements Serializable {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
+
+    public void addAlbum(Album album) {
+        this.albums.add(album);
+    }
+
+    public void removeAlbum(Album album) {
+        this.albums.remove(album);
     }
 
 }
