@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author gianlucampos
  */
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://gianlucampos.github.io/crud-react-frontend/")
 @RestController
 @RequestMapping("/artistas")
 public class ArtistaController {
