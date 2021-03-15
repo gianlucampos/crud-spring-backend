@@ -15,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Album implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name = "seqalbum", sequenceName = "seqalbum", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqalbum")

@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 public class Playlist implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name = "seqplaylist", sequenceName = "seqplaylist", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqplaylist")

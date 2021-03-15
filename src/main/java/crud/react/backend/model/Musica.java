@@ -1,7 +1,16 @@
 package crud.react.backend.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -10,6 +19,7 @@ import javax.persistence.*;
 @Entity
 public class Musica implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name = "seqmusica", sequenceName = "seqmusica", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seqmusica")
@@ -54,5 +64,5 @@ public class Musica implements Serializable {
     public void setAlbum(Album album) {
         this.album = album;
     }
-    
+
 }

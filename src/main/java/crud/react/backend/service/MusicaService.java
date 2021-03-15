@@ -1,16 +1,16 @@
 package crud.react.backend.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import crud.react.backend.model.Album;
 import crud.react.backend.model.Artista;
 import crud.react.backend.model.Musica;
 import crud.react.backend.repository.AlbumRepository;
 import crud.react.backend.repository.ArtistaRepository;
 import crud.react.backend.repository.MusicaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  *
@@ -42,7 +42,7 @@ public class MusicaService {
         musicaRepository.delete(musica);
     }
 
-    //Artista
+    // Artista
     public Artista saveArtista(Artista artista) {
         return artistaRepository.save(artista);
     }
@@ -51,13 +51,13 @@ public class MusicaService {
         return artistaRepository.findAll();
     }
 
-    //Album
-    //@POST albums
+    // Album
+    // @POST albums
     public Album saveAlbum(Album album) {
         return albumRepository.save(album);
     }
 
-    //@GET albums/{artista}
+    // @GET albums/{artista}
     public List<Album> findAlbunsByArtista(Long idArtista) {
         return albumRepository.findAlbunsByArtista(idArtista);
     }

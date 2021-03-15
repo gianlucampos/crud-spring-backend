@@ -48,7 +48,7 @@ public class MusicaController {
 
     //Deletar musica
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         Musica musica = service.retrieveMusicaById(id);
         service.deleteMusica(musica);
         return ResponseEntity.ok("Removido com sucesso");
