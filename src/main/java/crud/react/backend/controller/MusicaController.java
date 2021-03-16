@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author gianlucampos
  */
-@CrossOrigin(origins = "https://gianlucampos.github.io")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/musicas")
 public class MusicaController {
